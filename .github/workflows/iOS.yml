@@ -36,3 +36,11 @@ jobs:
         -scheme "RetroArch iOS Release" -xcconfig pkg/apple/GitHubCI.xcconfig \
         CODE_SIGNING_ALLOWED=NO \ CODE_SIGNING_REQUIRED=NO \ CODE_SIGN_IDENTITY="" \ PROVISIONING_PROFILE_SPECIFIER="" \
         -derivedDataPath build
+
+    - name: Upload iOS build artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: RetroArch-iOS-mupen64plus-next
+        path: |
+          build/
+        if-no-files-found: error
