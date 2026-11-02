@@ -23,6 +23,12 @@ jobs:
     steps:
     - uses: actions/checkout@v6
 
+    - name: Keep only Mupen64Plus Next core on iOS
+      run: |
+        set -e
+        rm -f pkg/apple/iOS/modules/* || true
+        ./pkg/apple/update-cores.sh mupen64plus_next
+
     - name: Compile RA
       run: |
         set -o pipefail
